@@ -108,7 +108,7 @@ public class TalonSRXWSInterface : MonoBehaviour {
         }
     }
 
-    void UpdateState() {
+    void FixedUpdate() {
         float output= percentOutput * (Inverted ? -1.0f : 1.0f) ;
         motor.setInput( output ) ;
         if ( followerMotorController) {
@@ -128,9 +128,7 @@ public class TalonSRXWSInterface : MonoBehaviour {
 
 
     // Update is called once per frame
-    void FixedUpdate() {
-        UpdateState() ;
-
+    void Update() {
         // Send encoder data
         Newtonsoft.Json.Linq.JObject jo = new JObject();
         jo.Add(new JProperty("type", "CANEncoder"));
